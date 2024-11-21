@@ -2,11 +2,11 @@ import { type NodeEditorProps, createEditorNode, domHelper } from '@keload/node-
 import nodeConfig from '../node-config';
 import type { InfoNodeProps } from '../types';
 
-const MenuItem = createEditorNode<NodeEditorProps<InfoNodeProps>>({
+const Info = createEditorNode<NodeEditorProps<InfoNodeProps>>({
   category: 'my_cat',
   color: '#a6bbcf',
   defaults: {
-    name: { value: '', required: true },
+    name: { value: '' },
     tv: { value: '', type: 'philips-tv-config', required: true },
     kind: { value: '' },
   },
@@ -14,7 +14,7 @@ const MenuItem = createEditorNode<NodeEditorProps<InfoNodeProps>>({
   outputs: 1,
   icon: 'font-awesome/fa-tower-broadcast',
   label: function () {
-    return this.name || 'MenuItem';
+    return this.name || this.kind || 'Info';
   },
   oneditprepare: function () {
     const { initSelect } = domHelper<InfoNodeProps>(this);
@@ -23,4 +23,4 @@ const MenuItem = createEditorNode<NodeEditorProps<InfoNodeProps>>({
   },
 });
 
-export default MenuItem;
+export default Info;
