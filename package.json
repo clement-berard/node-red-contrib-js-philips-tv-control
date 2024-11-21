@@ -24,12 +24,18 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@keload/node-red-dxp": "^1.4.1",
-    "philtv-js": "1.5.0",
-    "superstruct": "2.0.2",
-    "validator": "13.12.0"
+    "@keload/node-red-dxp": "link:/Users/keload/work/perso/node-red-dxp",
+    "philtv-js": "link:/Users/keload/work/perso/labs/philtv-js",
+    "superstruct": "2.0.2"
   },
-  "keywords": [],
+  "keywords": [
+    "node-red",
+    "ambilight",
+    "android-tv",
+    "jointspace",
+    "philips",
+    "philtv"
+  ],
   "author": "Clément BERARD <contact@berard.dev>",
   "license": "MIT",
   "repository": {

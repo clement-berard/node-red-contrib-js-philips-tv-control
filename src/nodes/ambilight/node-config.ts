@@ -11,7 +11,8 @@ export const actionsDefinition = [
   },
 ];
 
-export const ambilightChangeBrightnessAvailableValues = JOINTSPACE_CONSTANTS.ambilight.brightnessAvailableValues;
+export const ambilightChangeBrightnessAvailableValues =
+  JOINTSPACE_CONSTANTS.ambilight.ambilightChangeBrightnessAvailableSinglesValues;
 export const AmbilightFollowVideoModeEnum = JOINTSPACE_CONSTANTS.ambilight.followVideoMode;
 
 export const assumedValues = {
