@@ -1,10 +1,11 @@
 import { type NodeEditorProps, createEditorNode, domHelper } from '@keload/node-red-dxp/editor';
+import { NODES_CATEGORY, NODES_COLOR, NODES_ICONS } from '../../../common/constants';
 import { inputKeysSelect } from '../node-config';
 import type { NodeSendKeyProps } from '../types';
 
 const SendKey = createEditorNode<NodeEditorProps<NodeSendKeyProps>>({
-  category: 'my_cat',
-  color: '#a6bbcf',
+  category: NODES_CATEGORY,
+  color: NODES_COLOR,
   defaults: {
     name: { value: '' },
     tv: { value: '', type: 'philips-tv-config', required: true },
@@ -12,7 +13,7 @@ const SendKey = createEditorNode<NodeEditorProps<NodeSendKeyProps>>({
   },
   inputs: 1,
   outputs: 1,
-  icon: 'font-awesome/fa-tower-broadcast',
+  icon: NODES_ICONS,
   label: function () {
     return this.name || this.key || 'SendKey';
   },

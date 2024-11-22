@@ -1,13 +1,13 @@
 import { type NodeEditorProps, createEditorNode, createReactiveField, domHelper } from '@keload/node-red-dxp/editor';
-
+import { NODES_CATEGORY, NODES_COLOR, NODES_ICONS } from '../../../common/constants';
 import { actionsDefinition, assumedValues } from '../node-config';
 import type { NodeAmbilightProps } from '../types';
 
 const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
-  category: 'my_cat',
-  color: '#c4b256',
+  category: NODES_CATEGORY,
+  color: NODES_COLOR,
   defaults: {
-    name: { value: '', required: true },
+    name: { value: '' },
     action: { value: '', required: true },
     value: { value: '', required: true },
     returnInfo: { value: false },
@@ -15,14 +15,12 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
   },
   inputs: 1,
   outputs: 1,
-  icon: 'font-awesome/fa-tower-broadcast',
+  icon: NODES_ICONS,
   label: function () {
-    return this.name || 'Ambilight';
+    return this.name || this.action || 'Ambilight';
   },
   oneditprepare: function () {
-    const vm = this;
-
-    const { initSelect, watchInput, jqSelector } = domHelper<NodeAmbilightProps>(vm);
+    const { initSelect, watchInput, jqSelector } = domHelper<NodeAmbilightProps>(this);
 
     initSelect('$action', actionsDefinition, {
       emptyValue: '-- From msg.payload --',
@@ -30,9 +28,7 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
 
     function handleSelectActionChange(currentAction: string) {
       const options = (assumedValues[currentAction] || []).map((value) => ({ value, text: value }));
-      initSelect('$value', options, {
-        selected: Number.isNaN(Number(vm.value)) ? vm.value : Number(vm.value),
-      });
+      initSelect('$value', options);
     }
 
     handleSelectActionChange(this.action);

@@ -1,5 +1,8 @@
 import type { NodeControllerConfig, NodeControllerInst } from '@keload/node-red-dxp/editor';
+import * as superstruct from 'superstruct';
+import { validate } from 'superstruct';
 import { getPhilipsTvCore } from '../philips-tv-config/utils';
+import { actionsDefinition } from './node-config';
 import type { NodeAmbilightProps } from './types';
 
 export default function (
@@ -13,32 +16,57 @@ export default function (
     const innerValue = config.value;
     const returnInfo = config.returnInfo;
 
-    const matchers = {
-      set_brightness: {
-        call: () => tvClient.changeAmbilightBrightness(innerValue),
-      },
-      set_video_mode: {
-        call: () => tvClient.setAmbilightFollowVideoMode(innerValue),
-      },
-    };
-
-    const matcher = matchers[currentAction];
-
-    await matcher.call();
-
-    const nextPayload = {
+    let innerPayload = {
       value: innerValue,
       action: currentAction,
+      returnInfo,
     };
 
-    if (returnInfo) {
+    if (msg.payload) {
+      innerPayload = msg.payload as unknown as any;
+    }
+
+    const payloadSchema = superstruct.object({
+      action: superstruct.enums(actionsDefinition.map((action) => action.value)),
+      value: superstruct.union([superstruct.string(), superstruct.number()]),
+      returnInfo: superstruct.optional(superstruct.boolean()),
+    });
+
+    console.log('innerPayload', innerPayload);
+    const [error, value] = validate(innerPayload, payloadSchema);
+
+    if (error) {
+      this.error(`Validation failed: ${error.message}`);
+      return;
+    }
+
+    const matchers = {
+      set_brightness: {
+        call: () => tvClient.changeAmbilightBrightness(innerPayload.value as any),
+      },
+      set_video_mode: {
+        call: () => tvClient.setAmbilightFollowVideoMode(innerPayload.value),
+      },
+    };
+
+    const matcher = matchers[innerPayload.action];
+
+    const [callError] = await matcher.call();
+
+    if (callError) {
+      this.error(`Error: ${callError.message}`);
+      return;
+    }
+
+    if (innerPayload.returnInfo) {
       const [, info] = await tvClient.getAmbilightFullInformation();
-      nextPayload['info'] = info;
+      // @ts-ignore
+      innerPayload.info = info;
     }
 
     this.send({
       ...msg,
-      payload: nextPayload,
+      payload: innerPayload,
     });
   });
 }
