@@ -5,6 +5,9 @@
   "engines": {
     "node": ">=18"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "pnpm node-red-dxp build",
     "dev": "pnpm node-red-dxp watch",
