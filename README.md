@@ -27,16 +27,16 @@ _How to in progress..._
 
 Many feature are missing, but the package is growing. Here is the list of the current features:
 
-### ambilight
+### `ambilight`
 
 - Manage Ambilight brightness
 - Manage Ambilight Follow Video Mode
 
-### send-key
+### `send-key`
 
 Send a key to the TV to control it. (Mute, Volume Up, Volume Down, Power, ...)
 
-### info
+### `info`
 
 - Get TV information System
 - Get all Ambilight current information
