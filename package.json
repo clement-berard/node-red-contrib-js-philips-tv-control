@@ -1,7 +1,7 @@
 {
   "name": "@keload/node-red-contrib-js-philips-tv-control",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "A collection of nodes to control Philips TV with Node-RED, including Ambilight control.",
   "engines": {
     "node": ">=18"
   },
@@ -52,5 +52,8 @@
   "bugs": {
     "url": "https://github.com/clement-berard/node-red-contrib-js-philips-tv-control/issues"
   },
-  "homepage": "https://github.com/clement-berard/node-red-contrib-js-philips-tv-control"
+  "homepage": "https://github.com/clement-berard/node-red-contrib-js-philips-tv-control",
+  "files": [
+    "dist"
+  ]
 }
