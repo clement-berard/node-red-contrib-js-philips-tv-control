@@ -17,6 +17,12 @@ npm install @keload/node-red-contrib-js-philips-tv-control
 
 or with the palette manager in Node-RED.
 
+## Prerequisites
+
+You need to have valid digest credentials to access your TV.
+
+_How to in progress..._
+
 ## Features
 
 Many feature are missing, but the package is growing. Here is the list of the current features:
@@ -38,9 +44,9 @@ Send a key to the TV to control it. (Mute, Volume Up, Volume Down, Power, ...)
 
 ## Roadmap
 
-- [] Improve nodes documentation
-- [] Add more nodes to manage more features
-- [] Improve package documentation (Vitepress...)
+- [ ] Improve nodes documentation
+- [ ] Add more nodes to manage more features
+- [ ] Improve package documentation (Vitepress...)
 
 ## Contributing
 
