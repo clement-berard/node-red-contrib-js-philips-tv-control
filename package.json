@@ -10,7 +10,9 @@
     "dev": "pnpm node-red-dxp watch",
     "format": "pnpm biome format",
     "lint": "pnpm biome lint",
-    "lint:check": "pnpm biome check"
+    "lint:check": "pnpm biome check",
+    "release": "pnpm release-it",
+    "release:test": "pnpm release-it --dry-run"
   },
   "node-red": {
     "version": ">=2.0.0",
