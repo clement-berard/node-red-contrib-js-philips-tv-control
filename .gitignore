@@ -21,6 +21,4 @@ pnpm-debug.log*
 dist
 
 # temp builder files
-src/index-editor.ts
-src/index.ts
 .node-red-dx
