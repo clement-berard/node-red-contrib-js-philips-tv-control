@@ -1,4 +1,5 @@
-import { type NodeEditorProps, createEditorNode, createReactiveField, domHelper } from '@keload/node-red-dxp/editor';
+import { type NodeEditorProps, createEditorNode } from '@keload/node-red-dxp/editor';
+import { initSelect, watchInput } from '@keload/node-red-dxp/editor/dom-helper';
 import { NODES_CATEGORY, NODES_COLOR, NODES_ICONS } from '../../../common/constants';
 import { actionsDefinition, assumedValues } from '../node-config';
 import type { NodeAmbilightProps } from '../types';
@@ -20,10 +21,9 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
     return this.name || this.action || 'Ambilight';
   },
   oneditprepare: function () {
-    const { initSelect, watchInput, jqSelector } = domHelper<NodeAmbilightProps>(this);
-
     initSelect('$action', actionsDefinition, {
       emptyValue: '-- From msg.payload --',
+      selected: this.action,
     });
 
     function handleSelectActionChange(currentAction: string) {
@@ -34,7 +34,6 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
     handleSelectActionChange(this.action);
 
     watchInput(['$action'], ([actionValue]) => {
-      console.log('actionValue', actionValue);
       handleSelectActionChange(actionValue);
     });
   },

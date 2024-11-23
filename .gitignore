@@ -21,4 +21,4 @@ pnpm-debug.log*
 dist
 
 # temp builder files
-.node-red-dx
+.node-red-dxp

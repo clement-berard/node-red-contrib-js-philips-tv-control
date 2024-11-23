@@ -1,4 +1,5 @@
-import { type NodeEditorProps, createEditorNode, domHelper } from '@keload/node-red-dxp/editor';
+import { type NodeEditorProps, createEditorNode } from '@keload/node-red-dxp/editor';
+import { setInputValue, watchInput } from '@keload/node-red-dxp/editor/dom-helper';
 import { validators } from '@keload/node-red-dxp/utils';
 
 interface NodeProps {
@@ -30,8 +31,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
   label: function () {
     return this.name || 'Philips TV Configuration';
   },
-  oneditprepare: function () {
-    const { watchInput, setInputValue } = domHelper<NodeProps>(this);
+  oneditprepare: () => {
     watchInput(['$$ip'], ([ipValue]) => {
       setInputValue('$$url', `https://${ipValue}:1926/6`);
     });
