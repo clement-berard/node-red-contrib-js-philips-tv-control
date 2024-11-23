@@ -1,4 +1,5 @@
-import { type NodeEditorProps, createEditorNode, domHelper } from '@keload/node-red-dxp/editor';
+import { type NodeEditorProps, createEditorNode } from '@keload/node-red-dxp/editor';
+import { initSelect } from '@keload/node-red-dxp/editor/dom-helper';
 import { NODES_CATEGORY, NODES_COLOR, NODES_ICONS } from '../../../common/constants';
 import { inputKeysSelect } from '../node-config';
 import type { NodeSendKeyProps } from '../types';
@@ -17,8 +18,7 @@ const SendKey = createEditorNode<NodeEditorProps<NodeSendKeyProps>>({
   label: function () {
     return this.name || this.key || 'SendKey';
   },
-  oneditprepare: function () {
-    const { initSelect } = domHelper<NodeSendKeyProps>(this);
+  oneditprepare: () => {
     initSelect('$key', inputKeysSelect, {
       emptyValue: '-- From payload --',
     });

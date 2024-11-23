@@ -2,7 +2,7 @@
 
 [![node-red-dxp](https://badgen.net/badge/Build%20with/node-red-dxp)](https://www.npmjs.com/package/@keload/node-red-dxp)
 
-[![A mushroom-head robot](https://badgen.net/npm/v/@keload/node-red-dxp)](https://www.npmjs.com/package/@keload/node-red-dxp)
+[![node-red-contrib-js-philips-tv-control-version](https://badgen.net/npm/v/@keload/node-red-contrib-js-philips-tv-control)](https://www.npmjs.com/package/@keload/node-red-contrib-js-philips-tv-control)
 
 
 A collection of nodes to control Philips TV with Node-RED, including Ambilight control.

@@ -1,4 +1,5 @@
-import { type NodeEditorProps, createEditorNode, domHelper } from '@keload/node-red-dxp/editor';
+import { type NodeEditorProps, createEditorNode } from '@keload/node-red-dxp/editor';
+import { initSelect } from '@keload/node-red-dxp/editor/dom-helper';
 import { NODES_CATEGORY, NODES_COLOR, NODES_ICONS } from '../../../common/constants';
 import nodeConfig from '../node-config';
 import type { InfoNodeProps } from '../types';
@@ -17,9 +18,7 @@ const Info = createEditorNode<NodeEditorProps<InfoNodeProps>>({
   label: function () {
     return this.name || this.kind || 'Info';
   },
-  oneditprepare: function () {
-    const { initSelect } = domHelper<InfoNodeProps>(this);
-
+  oneditprepare: () => {
     initSelect('$kind', nodeConfig.kinds);
   },
 });
