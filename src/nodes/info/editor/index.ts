@@ -15,11 +15,14 @@ const Info = createEditorNode<NodeEditorProps<InfoNodeProps>>({
   inputs: 1,
   outputs: 1,
   icon: NODES_ICONS,
+  paletteLabel: 'Info',
   label: function () {
     return this.name || this.kind || 'Info';
   },
-  oneditprepare: () => {
-    initSelect('$kind', nodeConfig.kinds);
+  oneditprepare: function () {
+    initSelect('$kind', nodeConfig.kinds, {
+      selected: this.kind,
+    });
   },
 });
 
