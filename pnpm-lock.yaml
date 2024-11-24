@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@keload/node-red-dxp':
-        specifier: ^1.8.1
-        version: 1.8.1(typescript@5.7.2)
+        specifier: ^1.9.1
+        version: 1.9.1(typescript@5.7.2)
       philtv-js:
         specifier: ^1.6.0
         version: 1.6.0
@@ -454,8 +454,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@keload/node-red-dxp@1.8.1':
-    resolution: {integrity: sha512-fhe7IrPigdKGtWRVKrRG/MrDuJ47WDXc1Y6wR7TEkujJDr5atjb831rUPqkQ6HN/0BgYCXVeOskizGmev70SAQ==}
+  '@keload/node-red-dxp@1.9.1':
+    resolution: {integrity: sha512-fV02d+IzVqWIq6ujpgfesDZ4bjrFq8cXMiWThepv2/OUUjklFzSVHjuVPX3hcIiEud2wyzmbtjJmbM7kQOlroA==}
     hasBin: true
 
   '@nodelib/fs.scandir@2.1.5':
@@ -3249,7 +3249,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@keload/node-red-dxp@1.8.1(typescript@5.7.2)':
+  '@keload/node-red-dxp@1.9.1(typescript@5.7.2)':
     dependencies:
       '@fullhuman/postcss-purgecss': 6.0.0(postcss@8.4.49)
       '@types/html-minifier-terser': 7.0.2
