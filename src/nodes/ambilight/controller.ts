@@ -32,7 +32,6 @@ export default function (
       returnInfo: superstruct.optional(superstruct.boolean()),
     });
 
-    console.log('innerPayload', innerPayload);
     const [error, value] = validate(innerPayload, payloadSchema);
 
     if (error) {

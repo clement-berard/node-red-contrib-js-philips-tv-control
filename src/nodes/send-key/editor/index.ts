@@ -15,12 +15,13 @@ const SendKey = createEditorNode<NodeEditorProps<NodeSendKeyProps>>({
   inputs: 1,
   outputs: 1,
   icon: NODES_ICONS,
+  paletteLabel: 'Send Key',
   label: function () {
-    return this.name || this.key || 'SendKey';
+    return this.name || this.key || 'Send Key';
   },
-  oneditprepare: () => {
+  oneditprepare: function () {
     initSelect('$key', inputKeysSelect, {
-      emptyValue: '-- From payload --',
+      selected: this.key,
     });
   },
 });
