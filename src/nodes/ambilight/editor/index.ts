@@ -22,6 +22,23 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
     return this.name || this.action || 'Ambilight';
   },
   oneditprepare: function () {
+    $('#trigger-action-button').click(() => {
+      $.ajax({
+        url: 'js-philips-tv-control/pairing',
+        type: 'POST',
+        data: { action: 'start' },
+        success: (response) => {
+          $('#pairing-ready').removeClass('hidden');
+        },
+        error: (err) => {
+          RED.notify(`Erreur : ${err.responseJSON.message}`, {
+            type: 'error',
+            timeout: 10_000,
+          });
+        },
+      });
+    });
+
     initSelect('$action', actionsDefinition, {
       emptyValue: 'Select an action',
       selected: this.action,
