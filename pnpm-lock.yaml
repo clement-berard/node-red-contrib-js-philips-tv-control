@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@keload/node-red-dxp':
-        specifier: ^1.9.1
-        version: 1.9.1(typescript@5.7.2)
+        specifier: ^1.10.0
+        version: 1.10.0(typescript@5.7.2)
       philtv-js:
-        specifier: ^1.6.0
-        version: 1.6.0
+        specifier: ^1.7.0
+        version: 1.7.0
       superstruct:
         specifier: 2.0.2
         version: 2.0.2
@@ -454,8 +454,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@keload/node-red-dxp@1.9.1':
-    resolution: {integrity: sha512-fV02d+IzVqWIq6ujpgfesDZ4bjrFq8cXMiWThepv2/OUUjklFzSVHjuVPX3hcIiEud2wyzmbtjJmbM7kQOlroA==}
+  '@keload/node-red-dxp@1.10.0':
+    resolution: {integrity: sha512-bO7QVXjXuBEeCr8cgMDwb7nb0DTSxOMFN5W+zds3LggfWJKWwG0Lf2CJOaf2mMn//iAo2IFSkthhs3vVIGuVFQ==}
     hasBin: true
 
   '@nodelib/fs.scandir@2.1.5':
@@ -655,8 +655,8 @@ packages:
   '@types/cors@2.8.17':
     resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
 
-  '@types/express-serve-static-core@5.0.1':
-    resolution: {integrity: sha512-CRICJIl0N5cXDONAdlTv5ShATZ4HEwk6kDDIW2/w9qOWKg+NU/5F8wYRWCrONad0/UKkloNSmmyN/wX4rtpbVA==}
+  '@types/express-serve-static-core@5.0.2':
+    resolution: {integrity: sha512-vluaspfvWEtE4vcSDlKRNer52DvOGrB2xv6diXy6UKyKW0lqZiWHGNApSyxOv+8DE5Z27IzVvE7hNkxg7EXIcg==}
 
   '@types/express@5.0.0':
     resolution: {integrity: sha512-DvZriSMehGHL1ZNLzi6MidnsDhUZM/x2pRdDIKdwbUNqqwHxMlRdkxtn6/EPKyqKpHqTl/4nRZsRNLpZxZRpPQ==}
@@ -2160,8 +2160,8 @@ packages:
   pause-stream@0.0.11:
     resolution: {integrity: sha512-e3FBlXLmN/D1S+zHzanP4E/4Z60oFAa3O051qt1pxa7DEJWKAyil6upYVXCWadEnuoqa4Pkc9oUx9zsxYeRv8A==}
 
-  philtv-js@1.6.0:
-    resolution: {integrity: sha512-o3qVbAIq5LIeJOc/rUSdF2pCOkwe5JBgAERQvaRfe/Egr+rZnRR7VVGz5MCtR2GxWcD4cksPtKCoCFTeGcgO8w==}
+  philtv-js@1.7.0:
+    resolution: {integrity: sha512-+jYhI9B9SYtskNAlNSlGAyMDLKlyUTf8tdQKF+8C4vtdk7/bNoJ2zCuJzjTtWI58pdZR5Zi3axIRsidlPHZWFw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3249,7 +3249,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@keload/node-red-dxp@1.9.1(typescript@5.7.2)':
+  '@keload/node-red-dxp@1.10.0(typescript@5.7.2)':
     dependencies:
       '@fullhuman/postcss-purgecss': 6.0.0(postcss@8.4.49)
       '@types/html-minifier-terser': 7.0.2
@@ -3475,7 +3475,7 @@ snapshots:
     dependencies:
       '@types/node': 22.9.3
 
-  '@types/express-serve-static-core@5.0.1':
+  '@types/express-serve-static-core@5.0.2':
     dependencies:
       '@types/node': 22.9.3
       '@types/qs': 6.9.17
@@ -3485,7 +3485,7 @@ snapshots:
   '@types/express@5.0.0':
     dependencies:
       '@types/body-parser': 1.19.5
-      '@types/express-serve-static-core': 5.0.1
+      '@types/express-serve-static-core': 5.0.2
       '@types/qs': 6.9.17
       '@types/serve-static': 1.15.7
 
@@ -5125,7 +5125,7 @@ snapshots:
     dependencies:
       through: 2.3.8
 
-  philtv-js@1.6.0:
+  philtv-js@1.7.0:
     dependencies:
       consola: 3.2.3
       is-ip: 5.0.1
