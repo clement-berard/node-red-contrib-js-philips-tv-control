@@ -32,7 +32,6 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
     return this.name || 'Philips TV Configuration';
   },
   oneditprepare: function () {
-    const vm = this;
     const buildFullUrl = (ip: string) => `https://${ip}:1926/6`;
 
     const notifyError = (message: string) => {
@@ -47,7 +46,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
       $.ajax({
         url: 'js-philips-tv-control/pairing',
         type: 'POST',
-        data: { action: 'start', ip: vm.ip || jqSelector('$$ip').val() },
+        data: { action: 'start', ip: this.ip || jqSelector('$$ip').val() },
         beforeSend() {
           $('#pairing-ready').addClass('hidden');
         },
@@ -87,8 +86,8 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
       });
     });
 
-    if (vm.ip) {
-      if (validators.isIP(vm.ip)) {
+    if (this.ip) {
+      if (validators.isIP(this.ip)) {
         $('#pairing-section').removeClass('hidden');
       }
     }
