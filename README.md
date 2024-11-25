@@ -21,7 +21,9 @@ or with the palette manager in Node-RED.
 
 You need to have valid digest credentials to access your TV.
 
-_How to in progress..._
+You can do this in the TV config node.
+
+![paring-config.png](docs/img/paring-config.png)
 
 ## Features
 

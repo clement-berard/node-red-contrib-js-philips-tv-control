@@ -1,12 +1,13 @@
 import { PhilTVPairing } from 'philtv-js';
 
 export default function () {
+  let pjs: PhilTVPairing;
+
   RED.httpNode.post('/js-philips-tv-control/pairing', async (req, res) => {
-    const { action } = req.body;
+    const { action, ip, pin } = req.body;
 
     if (action === 'start') {
-      console.log('on arrive bien la');
-      const pjs = new PhilTVPairing({ tvIp: '10.0.0.19' });
+      pjs = new PhilTVPairing({ tvIp: ip });
 
       const [errInit, dataInit] = await pjs.init();
 
@@ -24,9 +25,17 @@ export default function () {
 
       res.status(200).json({ success: false, message: dataInit });
     } else if (action === 'complete') {
-      console.log('COMPLETE ROUTE');
+      const [error, config] = await pjs.completePairing(pin);
+
+      if (error) {
+        res.status(400).json({ success: false, message: error.message });
+      }
+
+      if (config) {
+        res.status(200).json({ user: config.user, password: config.password });
+      }
     } else {
-      res.status(400).json({ success: false, message: 'Action inconnue' });
+      res.status(400).json({ success: false, message: 'Undefined action' });
     }
   });
 }
