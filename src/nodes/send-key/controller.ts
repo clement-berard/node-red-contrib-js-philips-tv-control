@@ -12,15 +12,20 @@ export default function (this: NodeControllerInst<NodeSendKeyProps>, config: Nod
     const currentPayload = msg.payload as InputKeys;
     const configKey = config.key as InputKeys;
 
-    const realCommand = configKey || currentPayload;
+    const realCommand = currentPayload || configKey;
     const keySchema = enums(inputKeys);
-    const [error, value] = validate(msg.payload, keySchema);
+    const [error] = validate(msg.payload, keySchema);
     if (error) {
-      this.error(`Validation failed: ${error.message}`);
+      this.error(`Validation failed: ${error.message}`, msg);
       return;
     }
 
-    await tvClient.sendKey(realCommand);
+    const [err] = await tvClient.sendKey(realCommand);
+
+    if (err) {
+      this.error(err.message, msg);
+      return;
+    }
 
     this.send({
       ...msg,

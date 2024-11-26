@@ -32,10 +32,10 @@ export default function (
       returnInfo: superstruct.optional(superstruct.boolean()),
     });
 
-    const [error, value] = validate(innerPayload, payloadSchema);
+    const [error] = validate(innerPayload, payloadSchema);
 
     if (error) {
-      this.error(`Validation failed: ${error.message}`);
+      this.error(`Validation failed: ${error.message}`, msg);
       return;
     }
 
@@ -53,7 +53,7 @@ export default function (
     const [callError] = await matcher.call();
 
     if (callError) {
-      this.error(`Error: ${callError.message}`);
+      this.error(`Error: ${callError.message}`, msg);
       return;
     }
 
