@@ -1,4 +1,5 @@
 import type { NodeControllerConfig, NodeControllerInst } from '@keload/node-red-dxp/editor';
+import type { NodeMessageInFlow } from 'node-red';
 import { enums, validate } from 'superstruct';
 import { getPhilipsTvCore } from '../philips-tv-config/utils';
 import pckNodeConfig from './node-config';
@@ -22,31 +23,31 @@ export default function (this: NodeControllerInst<InfoNodeProps>, config: NodeCo
     return error ? [false, error.message] : [true, value];
   };
 
-  const executeAction = async (action: string) => {
+  const executeAction = async (action: string, initialMessage: NodeMessageInFlow) => {
     try {
       const [err, data] = await actionHandlers[action]();
       if (err) {
-        this.error(err.message);
+        this.error(err.message, initialMessage);
       } else {
-        this.send({ payload: data });
+        this.send({ ...initialMessage, payload: data });
       }
     } catch (unexpectedError) {
-      this.error(`Unexpected error: ${unexpectedError.message}`);
+      this.error(`Unexpected error: ${unexpectedError.message}`, initialMessage);
     }
   };
 
   this.on('input', async (msg) => {
-    if (msg.payload) {
+    if (action === '' && msg.payload) {
       const [isValid, validationError] = validatePayload(msg.payload);
 
       if (!isValid) {
-        this.error(`Validation failed: ${validationError}`);
+        this.error(`Validation failed: ${validationError}`, msg);
         return;
       }
 
       action = msg.payload as string;
     }
 
-    await executeAction(action);
+    await executeAction(action, msg);
   });
 }

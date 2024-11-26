@@ -22,6 +22,7 @@ const Info = createEditorNode<NodeEditorProps<InfoNodeProps>>({
   oneditprepare: function () {
     initSelect('$kind', nodeConfig.kinds, {
       selected: this.kind,
+      emptyValue: '-- from payload --',
     });
   },
 });

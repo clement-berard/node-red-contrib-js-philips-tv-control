@@ -22,6 +22,7 @@ const SendKey = createEditorNode<NodeEditorProps<NodeSendKeyProps>>({
   oneditprepare: function () {
     initSelect('$key', inputKeysSelect, {
       selected: this.key,
+      emptyValue: '-- from payload --',
     });
   },
 });
