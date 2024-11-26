@@ -1,6 +1,6 @@
 {
   "name": "@keload/node-red-contrib-js-philips-tv-control",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A collection of nodes to control Philips TV with Node-RED, including Ambilight control.",
   "engines": {
     "node": ">=18"
