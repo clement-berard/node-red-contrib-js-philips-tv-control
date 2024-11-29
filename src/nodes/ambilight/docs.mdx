@@ -1,0 +1,23 @@
+import {assumedValues} from './node-config'
+
+Manage Ambilight brightness and modes.
+
+_If payload is passed, it will set values passed in the payload.
+All other values configured in the node will be ignored._
+
+Valid `msg.payload`:
+
+{Object.entries(assumedValues).map(([key, value]) => (
+<pre key={key}>
+    <code>
+      {JSON.stringify(
+          {
+              action: key,
+              value: value.join(' | '),
+          },
+          null,
+          2
+      )}
+    </code>
+  </pre>
+))}

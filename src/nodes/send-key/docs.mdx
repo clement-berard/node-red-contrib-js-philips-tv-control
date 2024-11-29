@@ -1,0 +1,14 @@
+import {inputKeys} from './node-config'
+
+Send key to your TV (Play, Pause, Volume Up, Volume Down, etc.)
+
+_If payload is passed, it will set values passed in the payload.
+All other values configured in the node will be ignored._
+
+Valid `msg.payload`:
+
+<ul>
+{inputKeys.map(val => (
+<li key={val}><code>{val}</code></li>
+))}
+</ul>
