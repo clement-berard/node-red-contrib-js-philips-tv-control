@@ -1,0 +1,14 @@
+import nodeConfig from './node-config'
+
+Get TV information System, Ambilight current information and TV structure.
+
+_If payload is passed, it will set values passed in the payload.
+All other values configured in the node will be ignored._
+
+Valid `msg.payload`:
+
+<ul>
+    {nodeConfig.getAvailableKinds().map(val => (
+        <li key={val}><code>{val}</code></li>
+    ))}
+</ul>

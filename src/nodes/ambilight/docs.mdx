@@ -1,14 +1,23 @@
+import {assumedValues} from './node-config'
+
 Manage Ambilight brightness and modes.
 
-If payload is passed, it will set values passed in the payload.
-All other values configured in the node will be ignored.
+_If payload is passed, it will set values passed in the payload.
+All other values configured in the node will be ignored._
 
-Valid payload:
+Valid `msg.payload`:
 
-```js
-const payloadSchema = superstruct.object({
-    action: superstruct.enums(actionsDefinition.map((action) => action.value)),
-    value: superstruct.union([superstruct.string(), superstruct.number()]),
-    returnInfo: superstruct.optional(superstruct.boolean()),
-});
-```
+{Object.entries(assumedValues).map(([key, value]) => (
+<pre key={key}>
+    <code>
+      {JSON.stringify(
+          {
+              action: key,
+              value: value.join(' | '),
+          },
+          null,
+          2
+      )}
+    </code>
+  </pre>
+))}
