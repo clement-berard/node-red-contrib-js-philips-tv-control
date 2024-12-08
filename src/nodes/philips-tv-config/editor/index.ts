@@ -1,6 +1,6 @@
 import { type NodeEditorProps, createEditorNode } from '@keload/node-red-dxp/editor';
 import { jqSelector, setInputValue, watchInput } from '@keload/node-red-dxp/editor/dom-helper';
-import { validators } from '@keload/node-red-dxp/utils';
+import { isValidIP } from '@keload/node-red-dxp/utils';
 
 interface NodeProps {
   name: string;
@@ -21,7 +21,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
     ip: {
       value: '',
       required: true,
-      validate: (v) => validators.isIP(v),
+      validate: (v) => isValidIP(v),
     },
   },
   credentials: {
@@ -87,7 +87,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
     });
 
     if (this.ip) {
-      if (validators.isIP(this.ip)) {
+      if (isValidIP(this.ip)) {
         $('#pairing-section').removeClass('hidden');
       }
     }
@@ -95,7 +95,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
     watchInput(['$$ip'], ([ipValue]) => {
       const url = buildFullUrl(ipValue);
       setInputValue('$$url', url);
-      if (validators.isIP(ipValue)) {
+      if (isValidIP(ipValue)) {
         $('#pairing-section').removeClass('hidden');
       } else {
         $('#pairing-section').addClass('hidden');
