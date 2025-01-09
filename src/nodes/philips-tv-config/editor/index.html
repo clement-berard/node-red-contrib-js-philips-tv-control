@@ -1,33 +1,31 @@
-<div class="dxp-form-row">
-    <div class="main">
-        <div>
-            <i class="fa fa-tag"></i>
-            <label for="node-config-input-name" data-i18n="name"></label>
-        </div>
+<div class="dxp-template-form-row">
+    <label for="node-config-input-name" data-i18n="name">
+        <i class="fa fa-tag"></i>
+    </label>
+    <div class="content">
         <input type="text" id="node-config-input-name" data-i18n="[placeholder]name"/>
     </div>
 </div>
-
-<div class="dxp-form-row">
-    <div class="main">
-        <div>
-            <i class="fa fa-link"></i>
-            <label for="node-config-input-ip">TV IP</label>
-        </div>
+<div class="dxp-template-form-row">
+    <label for="node-config-input-ip">
+        <i class="fa fa-link"></i>
+        TV IP
+    </label>
+    <div class="content">
         <input type="text" id="node-config-input-ip" placeholder="192.168.1.22"/>
     </div>
 </div>
 
-<div class="dxp-form-row">
-    <div class="main">
-        <div>
-            <i class="fa fa-link"></i>
-            <label for="node-config-input-url">API URL</label>
-        </div>
+<div class="dxp-template-form-row">
+    <label for="node-config-input-url">
+        <i class="fa fa-link"></i>
+        API URL
+    </label>
+    <div class="content">
         <input type="text" id="node-config-input-url" disabled/>
-    </div>
-    <div class="hint">
-        <i class="fa fa-info-circle"></i> Port <span class="font-bold">1926</span> and version <span class="font-bold">6</span> is automatically added to the API Url.
+        <div class="hint">
+            <i class="fa fa-info-circle"></i> Port <span class="font-bold">1926</span> and version <span class="font-bold">6</span> is automatically added to the API Url.
+        </div>
     </div>
 </div>
 
@@ -38,25 +36,26 @@
     Otherwise, you can try to pair the TV below.
 </div>
 
-<div class="dxp-form-row">
-    <div class="main">
-        <div>
-            <i class="fa fa-user"></i>
-            <label for="node-config-input-digest_user">Digest User</label>
-        </div>
+<div class="dxp-template-form-row">
+    <label for="node-config-input-digest_user">
+        <i class="fa fa-user"></i>
+        Digest User
+    </label>
+    <div class="content">
         <input type="text" id="node-config-input-digest_user" placeholder="Digest user name"/>
     </div>
 </div>
 
-<div class="dxp-form-row">
-    <div class="main">
-        <div>
-            <i class="fa fa-lock"></i>
-            <label for="node-config-input-digest_password" title="Digest Password">Digest Password</label>
-        </div>
+<div class="dxp-template-form-row">
+    <label for="node-config-input-digest_user">
+        <i class="fa fa-lock"></i>
+        Digest Password
+    </label>
+    <div class="content">
         <input type="password" id="node-config-input-digest_password" placeholder="Digest password"/>
     </div>
 </div>
+
 <div id="pairing-section" class="form-row text-center hidden">
     <button id="trigger-action-start-pairing" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mb-2">
         Start Pairing
