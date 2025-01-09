@@ -46,7 +46,8 @@
     "android-tv",
     "jointspace",
     "philips",
-    "philtv"
+    "philtv",
+    "node-red-dxp"
   ],
   "author": "Clément BERARD <contact@berard.dev>",
   "license": "MIT",
