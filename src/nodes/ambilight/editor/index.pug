@@ -1,0 +1,24 @@
+include ../../../common/editor/templates/common-head-fields
+
+.dxp-template-form-row
+    label(for="node-input-action")
+        i.fa.fa-bolt
+        | Action
+    .content
+        select#node-input-action
+
+.dxp-template-form-row
+    label(for="node-input-value")
+        i.fa.fa-cube
+        | Value
+    .content
+        select#node-input-value
+
+.dxp-template-form-row
+    label(for="node-input-returnInfo")
+        i.fa.fa-table
+        | Return info
+    .content
+        .checkbox
+            input(type="checkbox" id="node-input-returnInfo")
+            span.italic Return ambilight information after operation

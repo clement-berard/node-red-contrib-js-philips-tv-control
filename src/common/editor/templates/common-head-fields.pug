@@ -1,0 +1,19 @@
+//include ../../../../.node-red-dxp/template
+
+//+dxpFormRowInputText('tv', 'TV', 'tv')
+//+dxpFormRowInputText('name', 'name', 'tag', 'name')
+
+.dxp-template-form-row
+    label(for="node-input-tv")
+        i.fa.fa-tv
+        | TV
+    .content
+        input(type="text" id="node-input-tv")
+
+
+.dxp-template-form-row
+    label(for="node-input-name")
+        i.fa.fa-tag
+        span(data-i18n="name") name
+    .content
+        input(type="text" id="node-input-name" data-i18n="[placeholder]name")
