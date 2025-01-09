@@ -14,7 +14,7 @@ export default function (this: NodeControllerInst<NodeSendKeyProps>, config: Nod
 
     const realCommand = currentPayload || configKey;
     const keySchema = enums(inputKeys);
-    const [error] = validate(msg.payload, keySchema);
+    const [error] = validate(realCommand, keySchema);
     if (error) {
       this.error(`Validation failed: ${error.message}`, msg);
       return;
