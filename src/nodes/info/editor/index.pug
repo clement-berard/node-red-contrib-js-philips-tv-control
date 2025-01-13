@@ -1,8 +1,4 @@
+include ../../../../.node-red-dxp/pug-helper
 include ../../../common/editor/templates/common-head-fields
 
-.dxp-template-form-row
-    label(for="node-input-kind")
-        i.fa.fa-bolt
-        | Action
-    .content
-        select#node-input-kind
++dxpFormRowSelect('kind', 'Action', 'bolt')

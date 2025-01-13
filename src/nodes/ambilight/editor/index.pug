@@ -1,24 +1,6 @@
+include ../../../../.node-red-dxp/pug-helper
 include ../../../common/editor/templates/common-head-fields
 
-.dxp-template-form-row
-    label(for="node-input-action")
-        i.fa.fa-bolt
-        | Action
-    .content
-        select#node-input-action
-
-.dxp-template-form-row
-    label(for="node-input-value")
-        i.fa.fa-cube
-        | Value
-    .content
-        select#node-input-value
-
-.dxp-template-form-row
-    label(for="node-input-returnInfo")
-        i.fa.fa-table
-        | Return info
-    .content
-        .checkbox
-            input(type="checkbox" id="node-input-returnInfo")
-            span.italic Return ambilight information after operation
++dxpFormRowSelect('action', 'Action', 'bolt')
++dxpFormRowSelect('value', 'Value', 'cube')
++dxpFormRowCheckbox('returnInfo', 'return info', 'table', 'Return ambilight information after operation')
