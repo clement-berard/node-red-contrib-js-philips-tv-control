@@ -1,8 +1,4 @@
+include ../../../../.node-red-dxp/pug-helper
 include ../../../common/editor/templates/common-head-fields
 
-.dxp-template-form-row
-    label(for="node-input-key")
-        i.fa.fa-keyboard-o
-        | Key
-    .content
-        select#node-input-key
++dxpFormRowSelect('key', 'Key', 'keyboard-o')
