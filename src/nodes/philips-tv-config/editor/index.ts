@@ -1,4 +1,4 @@
-import { type NodeEditorProps, createEditorNode } from '@keload/node-red-dxp/editor';
+import { createEditorNode, type NodeEditorProps } from '@keload/node-red-dxp/editor';
 import { jqSelector, setInputValue, watchInput } from '@keload/node-red-dxp/editor/dom-helper';
 import { isValidIP } from '@keload/node-red-dxp/utils';
 
@@ -35,7 +35,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
     const buildFullUrl = (ip: string) => `https://${ip}:1926/6`;
 
     const notifyError = (message: string) => {
-      // @ts-ignore
+      // @ts-expect-error
       RED.notify(`Error : ${message}`, {
         type: 'error',
         timeout: 10_000,
@@ -50,7 +50,7 @@ export default createEditorNode<NodeEditorProps<NodeProps>, NodeCredentials>({
         beforeSend() {
           $('#pairing-ready').addClass('hidden');
         },
-        success: (response) => {
+        success: (_response) => {
           $('#pairing-ready').removeClass('hidden');
         },
         error: (err) => {

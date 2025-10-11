@@ -24,7 +24,7 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.2.5",
     "@keload/node-red-dxp": "1.23.3",
     "@release-it/conventional-changelog": "10.0.1",
     "@types/jquery": "3.5.33",

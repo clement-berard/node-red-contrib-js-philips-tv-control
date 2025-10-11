@@ -7,9 +7,9 @@ export function getPhilipsTvCore(RED: NodeAPI, tvNodeId: string) {
 
   const tvClient = getTvApi({
     url: tvConfig.url,
-    // @ts-ignore
+    // @ts-expect-error
     digest_user: tvConfig.credentials.digest_user,
-    // @ts-ignore
+    // @ts-expect-error
     digest_password: tvConfig.credentials.digest_password,
   });
 
