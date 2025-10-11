@@ -59,7 +59,7 @@ export default function (
 
     if (innerPayload.returnInfo) {
       const [, info] = await tvClient.getAmbilightFullInformation();
-      // @ts-ignore
+      // @ts-expect-error
       innerPayload.info = info;
     }
 
