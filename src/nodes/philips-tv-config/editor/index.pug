@@ -1,65 +1,59 @@
-.dxp-template-form-row
-    label(for="node-config-input-name" data-i18n="name")
-        i.fa.fa-tag
-    .content
-        input(type="text" id="node-config-input-name" data-i18n="[placeholder]name")
+include ../../../../.node-red-dxp/pug/helper
 
-.dxp-template-form-row
-    label(for="node-config-input-ip")
-        i.fa.fa-link
-        | TV IP
-    .content
-        input(type="text" id="node-config-input-ip" placeholder="192.168.1.22")
++dxpFormRowInputText({ id: 'name', label: 'Name', icon: 'tag', isConfig: true })
 
-.dxp-template-form-row
-    label(for="node-config-input-url")
-        i.fa.fa-link
-        | API URL
-    .content
-        input(type="text" id="node-config-input-url" disabled)
-        .hint
-            i.fa.fa-info-circle
-            |  Port
-            span.font-bold 1926
-            |  and version
-            span.font-bold 6
-            |  is automatically added to the API Url.
++dxpFormRowInputText({
+    id: 'ip',
+    isConfig: true,
+    label: 'TV IP',
+    icon: 'link',
+    placeholder: '192.168.1.22',
+})
 
-.alert.alert-info(class="mb:2").text-center
-    i.fa.fa-info-circle
-    br
-    | If you already have credentials, you can fill in the following fields
-    br
-    | Otherwise, you can try to pair the TV below.
++dxpFormRowInputText({
+    id: 'url',
+    label: 'API Url',
+    icon: 'link',
+    isConfig: true
+})(readonly)
+    +dxpHint({ icon: 'info-circle', fullWidth: true })
+        |  Port
+        span.font-bold.ml-1 1926
+        |  and version
+        span.font-bold.ml-1 6
+        |  is automatically added to the API Url.
 
-.dxp-template-form-row
-    label(for="node-config-input-digest_user")
-        i.fa.fa-user
-        | Digest User
-    .content
-        input(type="text" id="node-config-input-digest_user" placeholder="Digest user name")
 
-.dxp-template-form-row
-    label(for="node-config-input-digest_user")
-        i.fa.fa-lock
-        | Digest Password
-    .content
-        input(type="password" id="node-config-input-digest_password" placeholder="Digest password")
+.alert.alert-info.text-center
+    p If you already have credentials, you can fill in the following fields
+    p Otherwise, you can try to pair the TV below.
+
++dxpFormRowInputText({
+    id: 'digest_user',
+    label: 'Digest User',
+    icon: 'user',
+    placeholder: 'Digest user name',
+    isConfig: true
+})
+
++dxpFormRowInputText({
+    id: 'digest_password',
+    label: 'digest Password',
+    icon: 'lock',
+    placeholder: 'Digest password',
+    isConfig: true,
+})(type="password")
 
 #pairing-section.form-row.text-center.hidden
-    button#trigger-action-start-pairing(class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mb-2")
-        | Start Pairing
-
+    +simpleButton({ id: 'trigger-action-start-pairing', text: 'Start Pairing' })
     #pairing-ready.hidden
         .alert.alert-success
-            | Your TV is ready to pair. 🎉
-            br
-            | Please enter the pin code displayed on your TV.
+            p Your TV is ready to pair. 🎉
+            p Please enter the pin code displayed on your TV.
         div
-            input#pairing-pin-input(type="text" class="text-center !w-[30%]")
-        #invalid-pin.hidden.text-red-800
+            input#pairing-pin-input(type="text" class="text-center !w-[30%] !mb-3")
+        #invalid-pin.hidden.text-red-800.my-1
             | Pin must be 4 digits.
-        button#trigger-action-complete-pairing(class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 mb-4")
-            | Complete Pairing
+        +simpleButton({ id: 'trigger-action-complete-pairing', text: 'Complete Pairing' })
         #paring-success.hidden.alert.alert-success
             | Your TV is successfully paired. 🎉

@@ -1,6 +1,10 @@
-include ../../../../.node-red-dxp/pug-helper
 include ../../../common/editor/templates/common-head-fields
 
-+dxpFormRowSelect('action', 'Action', 'bolt')
-+dxpFormRowSelect('value', 'Value', 'cube')
-+dxpFormRowCheckbox('returnInfo', 'return info', 'table', 'Return ambilight information after operation')
++dxpFormRowSelect({ id: "action", label: "Action", icon: 'bolt' })
++dxpFormRowSelect({ id: "value", label: "Value", icon: 'cube' })
++dxpFormRowCheckbox({
+    id: "returnInfo",
+    label: "return info",
+    icon: 'table',
+    text: 'Return ambilight information after operation'
+})

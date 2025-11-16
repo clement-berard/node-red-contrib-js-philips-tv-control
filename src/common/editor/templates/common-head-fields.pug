@@ -1,4 +1,5 @@
-include ../../../../.node-red-dxp/pug-helper
+include ../../../../.node-red-dxp/pug/helper
 
-+dxpFormRowInputText('tv', 'TV', 'tv')
-+dxpFormRowInputText('name', 'name', 'tag', 'name')
++dxpFormRowSelectConfigNode({ id: 'tv', label: 'TV', icon: 'tv' })
++dxpFormRowInputText({ id: 'name', label: 'Name', icon: 'tag' })
+
