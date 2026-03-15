@@ -9,9 +9,9 @@ export default function (this: NodeControllerInst<InfoNodeProps>, config: NodeCo
   RED.nodes.createNode(this, config);
   const { tvClient } = getPhilipsTvCore(RED, config.tv);
   const actionHandlers = Object.freeze({
-    tv_ambilight_info: () => tvClient.getAmbilightFullInformation(),
-    tv_system: () => tvClient.getSystem(),
-    tv_structure: () => tvClient.getMenuStructure({ flat: true }),
+    tv_ambilight_info: () => tvClient.ambilight.getFullInformation(),
+    tv_system: () => tvClient.system.getSystem(),
+    tv_structure: () => tvClient.menu.getMenuStructure({ flat: true }),
   });
 
   let action = config.kind;
@@ -25,14 +25,11 @@ export default function (this: NodeControllerInst<InfoNodeProps>, config: NodeCo
 
   const executeAction = async (action: string, initialMessage: NodeMessageInFlow) => {
     try {
-      const [err, data] = await actionHandlers[action]();
-      if (err) {
-        this.error(err.message, initialMessage);
-      } else {
-        this.send({ ...initialMessage, payload: data });
-      }
+      const data = await actionHandlers[action]();
+
+      this.send({ ...initialMessage, payload: data });
     } catch (unexpectedError) {
-      this.error(`Unexpected error: ${unexpectedError.message}`, initialMessage);
+      this.error(unexpectedError.message, initialMessage);
     }
   };
 

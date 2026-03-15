@@ -1,5 +1,5 @@
 import { createEditorNode, type NodeEditorProps } from '@keload/node-red-dxp/editor';
-import { initSelect, watchInput } from '@keload/node-red-dxp/editor/dom-helper';
+import { initSelect, jqSelector, watchInput } from '@keload/node-red-dxp/editor/dom-helper';
 import { NODES_CATEGORY, NODES_COLOR, NODES_ICONS } from '../../../common/constants';
 import { actionsDefinition, assumedValues } from '../node-config';
 import type { NodeAmbilightProps } from '../types';
@@ -28,10 +28,16 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
     });
 
     const handleSelectActionChange = (currentAction: string) => {
-      const options = (assumedValues[currentAction] || []).map((value: string) => ({ value, text: value }));
-      initSelect('$value', options, {
-        selected: this.value,
-      });
+      const options = assumedValues?.[currentAction]?.map?.((value: string) => ({ value, text: value }));
+      const valueSelector = jqSelector('$value');
+      valueSelector.addClass('!hidden');
+
+      if (options) {
+        valueSelector.removeClass('!hidden');
+        initSelect('$value', options, {
+          selected: this.value,
+        });
+      }
     };
 
     handleSelectActionChange(this.action);
