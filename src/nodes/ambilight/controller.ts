@@ -1,4 +1,5 @@
 import type { NodeControllerConfig, NodeControllerInst } from '@keload/node-red-dxp/editor';
+import type { AmbilightBrightnessChoices, AmbilightFollowAudioMode, AmbilightFollowVideoMode } from 'philtv-js';
 import * as superstruct from 'superstruct';
 import { validate } from 'superstruct';
 import { getPhilipsTvCore } from '../philips-tv-config/utils';
@@ -41,26 +42,41 @@ export default function (
 
     const matchers = {
       set_brightness: {
-        call: () => tvClient.changeAmbilightBrightness(innerPayload.value as any),
+        call: async () => tvClient.ambilight.setBrightness(Number(innerPayload.value) as AmbilightBrightnessChoices),
+      },
+      decrease_brightness: {
+        call: async () => tvClient.ambilight.decreaseBrightness(),
+      },
+      increase_brightness: {
+        call: async () => tvClient.ambilight.increaseBrightness(),
       },
       set_video_mode: {
-        call: () => tvClient.setAmbilightFollowVideoMode(innerPayload.value),
+        call: () => tvClient.ambilight.setFollowVideoMode(innerPayload.value as AmbilightFollowVideoMode),
+      },
+      set_audio_mode: {
+        call: () => tvClient.ambilight.setFollowAudioMode(innerPayload.value as AmbilightFollowAudioMode),
       },
     };
 
     const matcher = matchers[innerPayload.action];
 
-    const [callError] = await matcher.call();
+    try {
+      await matcher.call();
+    } catch (e) {
+      this.error(`Error: ${e.message}`, msg);
 
-    if (callError) {
-      this.error(`Error: ${callError.message}`, msg);
       return;
     }
 
     if (innerPayload.returnInfo) {
-      const [, info] = await tvClient.getAmbilightFullInformation();
-      // @ts-expect-error
-      innerPayload.info = info;
+      try {
+        // @ts-expect-error
+        innerPayload.info = await tvClient.ambilight.getFullInformation();
+      } catch (e) {
+        this.error(`Error: ${e.message}`, msg);
+
+        return;
+      }
     }
 
     this.send({

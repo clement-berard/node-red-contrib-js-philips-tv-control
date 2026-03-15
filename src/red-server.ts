@@ -9,30 +9,32 @@ export default function () {
     if (action === 'start') {
       pjs = new PhilTVPairing({ tvIp: ip });
 
-      const [errInit, dataInit] = await pjs.init();
+      const initResponse = await pjs.init();
 
-      if (errInit) {
-        res.status(400).json({ success: false, message: errInit.message });
+      if (initResponse.success === false) {
+        res.status(400).json({ success: false, message: initResponse.error.message });
         return;
       }
 
-      const [errStart] = await pjs.startPairing();
+      const startRes = await pjs.startPairing();
 
-      if (errStart) {
-        res.status(400).json({ success: false, message: errStart.message });
+      if (startRes.success === false) {
+        res.status(400).json({ success: false, message: startRes.error.message });
         return;
       }
 
-      res.status(200).json({ success: false, message: dataInit });
+      res.status(200).json({ success: false, message: startRes.data });
     } else if (action === 'complete') {
-      const [error, config] = await pjs.completePairing(pin);
+      const completeRes = await pjs.completePairing(pin as string);
 
-      if (error) {
-        res.status(400).json({ success: false, message: error.message });
+      if (completeRes.success === false) {
+        res.status(400).json({ success: false, message: completeRes.error.message });
+
+        return;
       }
 
-      if (config) {
-        res.status(200).json({ user: config.user, password: config.password });
+      if (completeRes.data) {
+        res.status(200).json({ user: completeRes.data.user, password: completeRes.data.password });
       }
     } else {
       res.status(400).json({ success: false, message: 'Undefined action' });

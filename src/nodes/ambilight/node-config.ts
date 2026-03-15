@@ -1,4 +1,8 @@
-import { JOINTSPACE_CONSTANTS } from 'philtv-js/constants';
+import {
+  ambilightBrightnessChoices,
+  ambilightFollowAudioModeEnum,
+  ambilightFollowVideoModeEnum,
+} from 'philtv-js/constants';
 
 export const actionsDefinition = [
   {
@@ -6,16 +10,25 @@ export const actionsDefinition = [
     value: 'set_brightness',
   },
   {
+    text: 'Increase Brightness',
+    value: 'increase_brightness',
+  },
+  {
+    text: 'Decrease Brightness',
+    value: 'decrease_brightness',
+  },
+  {
     text: 'Set Video Mode',
     value: 'set_video_mode',
   },
+  {
+    text: 'Set Audio Mode',
+    value: 'set_audio_mode',
+  },
 ];
 
-export const ambilightChangeBrightnessAvailableValues =
-  JOINTSPACE_CONSTANTS.ambilight.ambilightChangeBrightnessAvailableSinglesValues;
-export const AmbilightFollowVideoModeEnum = JOINTSPACE_CONSTANTS.ambilight.followVideoMode;
-
 export const assumedValues = {
-  set_brightness: ambilightChangeBrightnessAvailableValues,
-  set_video_mode: AmbilightFollowVideoModeEnum,
+  set_brightness: ambilightBrightnessChoices,
+  set_video_mode: ambilightFollowVideoModeEnum,
+  set_audio_mode: ambilightFollowAudioModeEnum,
 };

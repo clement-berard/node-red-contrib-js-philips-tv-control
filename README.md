@@ -1,8 +1,8 @@
 # node-red-contrib-js-philips-tv-control
 
-A collection of nodes to control Philips TV with Node-RED, including Ambilight control.
+Seamlessly integrate and control your Philips TV within your Node-RED flows. From remote key emulation to advanced Ambilight management, this package provides a lightweight, pure JavaScript solution to bring your TV into your smart home ecosystem.
 
-Build on top of [philtv-js](https://github.com/clement-berard/philtv-js) (no python, only Javascript), this package provides a set of nodes to control your Philips TV with Node-RED.
+Built on top of [philtv-js](https://github.com/clement-berard/philtv-js) (no Python dependency), this package provides a set of nodes to control your Philips TV with Node-RED.
 
 <br/>
 <p align="center">
@@ -33,8 +33,14 @@ Build on top of [philtv-js](https://github.com/clement-berard/philtv-js) (no pyt
   </a>
 </p>
 
+## ✨ Features
 
-## Installation
+- **📺 TV Control**: Emulate remote control keys directly from Node-RED (Power, Volume, Mute, Navigation, etc.).
+- **💡 Ambilight Management**: Fine-tune your viewing experience by controlling Ambilight brightness and toggling between *Follow Video* and *Follow Audio* modes.
+- **ℹ️ System Information**: Retrieve real-time detailed system status, current Ambilight configuration, and TV structure data.
+- **🚀 Pure JavaScript**: No Python bindings or heavy dependencies. Perfect for Docker and lightweight environments.
+
+## 📦 Installation
 
 ```bash
 npm install @keload/node-red-contrib-js-philips-tv-control
@@ -42,44 +48,37 @@ npm install @keload/node-red-contrib-js-philips-tv-control
 
 or with the palette manager in Node-RED.
 
-## Prerequisites
+## ⚙️ Prerequisites
 
 You need to have valid digest credentials to access your TV.
+You can do this securely in the TV config node by entering the PIN displayed on your TV screen during pairing.
 
-You can do this in the TV config node.
+<p align="center">
+    <img src="docs/img/paring-config.png" alt="TV Pairing Configuration" width="75%">
+</p>
 
-![paring-config.png](docs/img/paring-config.png)
-
-## Features
-
-Many feature are missing, but the package is growing. Here is the list of the current features:
-
-### `ambilight`
-
-- Manage Ambilight brightness
-- Manage Ambilight Follow Video Mode
+## 🛠️ Available Nodes
 
 ### `send-key`
+Send a key to the TV to control it. *(e.g., Mute, Volume Up, Volume Down, Power, ...)*
 
-Send a key to the TV to control it. (Mute, Volume Up, Volume Down, Power, ...)
+### `ambilight`
+Take full control over your TV's built-in LED system.
+- Manage Ambilight brightness
+- Manage Ambilight Follow Video/Audio Mode
 
 ### `info`
-
+Fetch real-time data from your TV to trigger conditional flows.
 - Get TV information System
 - Get all Ambilight current information
 - Get all TV structure
 
-## Roadmap
+## 🤝 Contributing
 
-- [ ] Add more nodes to manage more features
-
-## Contributing
-
-This package use [node-red-dxp](https://www.npmjs.com/package/@keload/node-red-dxp) to build the package.
-A crazy fast and easy way to build Node-RED package.
+This package leverages [node-red-dxp](https://www.npmjs.com/package/@keload/node-red-dxp) under the hood—a crazy fast and easy way to structure and build Node-RED packages.
 
 Please feel free to contribute to this package by creating issues or pull requests.
 
-## License
+## 📄 License
 
 MIT
