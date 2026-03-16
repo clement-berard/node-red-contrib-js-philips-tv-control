@@ -28,7 +28,7 @@ export const actionsDefinition = [
 ];
 
 export const assumedValues = {
-  set_brightness: ambilightBrightnessChoices,
+  set_brightness: ambilightBrightnessChoices.map(String),
   set_video_mode: ambilightFollowVideoModeEnum,
   set_audio_mode: ambilightFollowAudioModeEnum,
 };
