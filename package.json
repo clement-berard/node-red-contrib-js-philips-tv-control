@@ -14,6 +14,7 @@
     "format": "pnpm biome format",
     "lint": "pnpm biome lint",
     "lint:check": "pnpm biome check",
+    "lint:ci": "pnpm biome ci",
     "release": "pnpm release-it",
     "release:test": "pnpm release-it --dry-run"
   },
