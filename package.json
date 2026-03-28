@@ -25,7 +25,7 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.7",
+    "@biomejs/biome": "2.4.9",
     "@keload/node-red-dxp": "1.32.0",
     "@release-it/conventional-changelog": "10.0.6",
     "@types/jquery": "4.0.0",
@@ -37,7 +37,7 @@
     "typescript": "5.9.3"
   },
   "dependencies": {
-    "philtv-js": "next",
+    "philtv-js": "2.2.0",
     "superstruct": "2.0.2"
   },
   "keywords": [
