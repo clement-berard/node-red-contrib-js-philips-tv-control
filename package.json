@@ -36,7 +36,7 @@
     "typescript": "7.0.2"
   },
   "dependencies": {
-    "philtv-js": "2.2.0",
+    "philtv-js": "2.3.0",
     "superstruct": "2.0.2"
   },
   "keywords": [

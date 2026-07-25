@@ -4,3 +4,4 @@ allowBuilds:
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@keload/*'
+  - philtv-js
