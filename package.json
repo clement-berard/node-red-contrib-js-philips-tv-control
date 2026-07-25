@@ -62,12 +62,5 @@
   "homepage": "https://github.com/clement-berard/node-red-contrib-js-philips-tv-control",
   "files": [
     "dist"
-  ],
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "@parcel/watcher",
-      "esbuild"
-    ]
-  }
+  ]
 }
