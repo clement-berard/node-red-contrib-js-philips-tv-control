@@ -28,7 +28,10 @@ const Ambilight = createEditorNode<NodeEditorProps<NodeAmbilightProps>>({
     });
 
     const handleSelectActionChange = (currentAction: string) => {
-      const options = assumedValues?.[currentAction as keyof typeof assumedValues]?.map?.((value: string) => ({ value, text: value }));
+      const options = assumedValues?.[currentAction as keyof typeof assumedValues]?.map?.((value: string) => ({
+        value,
+        text: value,
+      }));
       const valueSelector = jqSelector('$value');
       valueSelector.addClass('hidden!');
 
