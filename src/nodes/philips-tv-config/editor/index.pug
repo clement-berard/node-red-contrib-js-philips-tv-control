@@ -47,13 +47,13 @@ include ../../../../.node-red-dxp/pug/helper
 #pairing-section.form-row.text-center.hidden
     +simpleButton({ id: 'trigger-action-start-pairing', text: 'Start Pairing' })
     #pairing-ready.hidden
-        .alert.alert-success
+        .alert.alert-success.mb-2.mt-2
             p Your TV is ready to pair. 🎉
             p Please enter the pin code displayed on your TV.
         div
-            input#pairing-pin-input(type="text" class="text-center !w-[30%] !mb-3")
+            input#pairing-pin-input(type="text" class="text-center w-[30%]! mb-3!" placeholder='Enter code')
         #invalid-pin.hidden.text-red-800.my-1
             | Pin must be 4 digits.
         +simpleButton({ id: 'trigger-action-complete-pairing', text: 'Complete Pairing' })
-        #paring-success.hidden.alert.alert-success
+        #paring-success.hidden.alert.alert-success.mt-2
             | Your TV is successfully paired. 🎉

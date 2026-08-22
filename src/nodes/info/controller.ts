@@ -25,11 +25,11 @@ export default function (this: NodeControllerInst<InfoNodeProps>, config: NodeCo
 
   const executeAction = async (action: string, initialMessage: NodeMessageInFlow) => {
     try {
-      const data = await actionHandlers[action]();
+      const data = await actionHandlers[action as keyof typeof actionHandlers]();
 
       this.send({ ...initialMessage, payload: data });
     } catch (unexpectedError) {
-      this.error(unexpectedError.message, initialMessage);
+      this.error(unexpectedError instanceof Error ? unexpectedError.message : String(unexpectedError), initialMessage);
     }
   };
 
