@@ -58,12 +58,12 @@ export default function (
       },
     };
 
-    const matcher = matchers[innerPayload.action];
+    const matcher = matchers[innerPayload.action as keyof typeof matchers];
 
     try {
       await matcher.call();
     } catch (e) {
-      this.error(`Error: ${e.message}`, msg);
+      this.error(`Error: ${e instanceof Error ? e.message : String(e)}`, msg);
 
       return;
     }
@@ -73,7 +73,7 @@ export default function (
         // @ts-expect-error
         innerPayload.info = await tvClient.ambilight.getFullInformation();
       } catch (e) {
-        this.error(`Error: ${e.message}`, msg);
+        this.error(`Error: ${e instanceof Error ? e.message : String(e)}`, msg);
 
         return;
       }

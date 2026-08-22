@@ -23,7 +23,7 @@ export default function (this: NodeControllerInst<NodeSendKeyProps>, config: Nod
     try {
       await tvClient.input.sendKey(realCommand);
     } catch (err) {
-      this.error(err.message, msg);
+      this.error(err instanceof Error ? err.message : String(err), msg);
 
       return;
     }
