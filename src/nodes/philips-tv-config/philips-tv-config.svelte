@@ -20,15 +20,16 @@
 </script>
 
 <script lang="ts">
-  import { Button, Hint, Input, Row, useT } from '@keload/node-red-dxp/ui';
+  import { Button, Hint, Input, notifyError, Row, useT } from '@keload/node-red-dxp/ui';
+  import type { ButtonState } from '@keload/node-red-dxp/ui/Button.svelte';
 
   let { node }: { node: TVConfig & { credentials: { digest_user: string; digest_password: string } } } = $props();
 
   const t = useT();
   const jq = (globalThis as any).jQuery;
 
-  let startState = $state<'idle' | 'loading' | 'success' | 'error'>('idle');
-  let completeState = $state<'idle' | 'loading' | 'success' | 'error'>('idle');
+  let startState = $state<ButtonState>('idle');
+  let completeState = $state<ButtonState>('idle');
   let pairingReady = $state(false);
   let pin = $state('');
   let invalidPin = $state(false);
@@ -41,10 +42,6 @@
       node.url = `https://${node.ip}:1926/6`;
     }
   });
-
-  function notifyError(message: string) {
-    (globalThis as any).RED.notify(`Error : ${message}`, { type: 'error', timeout: 10_000 });
-  }
 
   function startPairing() {
     pairingReady = false;
