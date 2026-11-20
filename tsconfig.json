@@ -15,7 +15,6 @@
   "exclude": [
     "./src/editor.ts",
     "./src/editor/**/*",
-    "./src/nodes/**/editor/**/*",
     "./src/nodes/**/editor.*",
     "./test"
   ]
