@@ -19,8 +19,8 @@ importers:
         specifier: 2.6.8
         version: 2.6.8
       '@keload/node-red-dxp':
-        specifier: 2.3.1
-        version: 2.3.1(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)
+        specifier: 2.4.0
+        version: 2.4.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)
       '@release-it/conventional-changelog':
         specifier: 12.0.2
         version: 12.0.2(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.4)(release-it@21.1.2(@types/node@26.6.6)(supports-color@5.5.0))
@@ -477,8 +477,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@keload/node-red-dxp@2.3.1':
-    resolution: {integrity: sha512-kv2fsIxmYrkBzpb2R0lJmXv735qxXYH73MzE4Si/4NsNxGx63AGiFXQwIiWfEJlv+edDSqf5fbtK58BUmBA2xw==}
+  '@keload/node-red-dxp@2.4.0':
+    resolution: {integrity: sha512-eqbZPV8atACNeYWU7R7UGDuwjZ236ViGUDWzOazBS4vV9fHjBO+eHwX76JO0L9XyOMtjVeU2efb2ewTwZO882A==}
     engines: {node: '>=22.22'}
     hasBin: true
 
@@ -1498,8 +1498,8 @@ packages:
     resolution: {integrity: sha512-HqD3yTBfnBxIrbnM1DoD6Pcq8NECnh8d4As1Qgh0z5Gg3jRRIqijury0CL3ghu/edArpUYiYqQiDUQBIs4np3Q==}
     engines: {node: '>=10.0.0'}
 
-  engine.io@6.6.11:
-    resolution: {integrity: sha512-z34mGpLoY/82ZbkX1LqGMIaf3wjVMPL6gVC681QDqnmzJ26synI8qAE32P+a7UazmpJZ8UGrFIeAavgRfXzYrg==}
+  engine.io@6.6.12:
+    resolution: {integrity: sha512-o6WqrYV9WuxuGxpaPLibbqnvgO7YUpVf2Z6hYJNpizzNYCxQbAEu5w9Cm0aW8u4FIefnWCdGM1uZwor6iDRERg==}
     engines: {node: '>=10.2.0'}
 
   enhanced-resolve@5.27.0:
@@ -2760,9 +2760,9 @@ packages:
     resolution: {integrity: sha512-e0VyvkVTwVYViNovRkZ9aodhxVlyoMn7eJhVUPxZ+eK9P/7CBkxvvsBOHqFPEH416726W8tLXXXjKwqgTErrCQ==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
 
-  source-map-js@1.2.3:
-    resolution: {integrity: sha512-xj+WrAkyv5Qp+t7r9N5HvCBu7g1qOe6CKRNpq22X1GGcPEQADFU54v5qsPVs3/vrUFQ7XivFrcAVKA2stI0kWA==}
-    engines: {node: '>=0.10.0'}
+  source-map-js@1.2.4:
+    resolution: {integrity: sha512-J7ZjMvHd9O1fcT/5V09QWaaSl2BbWx3F6O08spde82Namf9UB0GxRVIPiNbVsdKkoizHiSpTodo3vp2bAy91MA==}
+    engines: {node: '>=6.0.0'}
 
   source-map-support@0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -3395,7 +3395,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.3
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@keload/node-red-dxp@2.3.1(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)':
+  '@keload/node-red-dxp@2.4.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)':
     dependencies:
       '@fullhuman/postcss-purgecss': 9.1.0(postcss@8.5.33)
       '@tailwindcss/node': 4.3.5
@@ -3653,7 +3653,7 @@ snapshots:
       jiti: 2.7.0
       lightningcss: 1.33.0
       magic-string: 1.4.5
-      source-map-js: 1.2.3
+      source-map-js: 1.2.4
       tailwindcss: 4.3.5
 
   '@tailwindcss/oxide-android-arm64@4.3.5':
@@ -4412,7 +4412,7 @@ snapshots:
 
   engine.io-parser@5.2.3: {}
 
-  engine.io@6.6.11(supports-color@5.5.0):
+  engine.io@6.6.12(supports-color@5.5.0):
     dependencies:
       '@types/cors': 2.8.19
       '@types/node': 26.6.6
@@ -5656,7 +5656,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.20
       picocolors: 1.1.1
-      source-map-js: 1.2.3
+      source-map-js: 1.2.4
 
   powershell-utils@0.2.1: {}
 
@@ -5967,7 +5967,7 @@ snapshots:
     dependencies:
       chokidar: 5.0.0
       immutable: 5.2.1
-      source-map-js: 1.2.3
+      source-map-js: 1.2.4
     optionalDependencies:
       '@parcel/watcher': 2.6.0
 
@@ -6091,7 +6091,7 @@ snapshots:
       accepts: 1.3.8
       cors: 2.8.6
       debug: 4.4.3(supports-color@5.5.0)
-      engine.io: 6.6.11(supports-color@5.5.0)
+      engine.io: 6.6.12(supports-color@5.5.0)
       socket.io-adapter: 2.5.8(supports-color@5.5.0)
       socket.io-parser: 4.2.7(supports-color@5.5.0)
     transitivePeerDependencies:
@@ -6112,7 +6112,7 @@ snapshots:
       ip-address: 10.7.6
       smart-buffer: 4.2.0
 
-  source-map-js@1.2.3: {}
+  source-map-js@1.2.4: {}
 
   source-map-support@0.5.21:
     dependencies:
