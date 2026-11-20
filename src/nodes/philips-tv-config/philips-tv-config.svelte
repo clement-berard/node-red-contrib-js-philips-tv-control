@@ -20,15 +20,17 @@
 </script>
 
 <script lang="ts">
-  import { Hint, Input, Row, useT } from '@keload/node-red-dxp/ui';
+  import { Button, Hint, Input, notifyError, Row, useT } from '@keload/node-red-dxp/ui';
+  import type { ButtonState } from '@keload/node-red-dxp/ui/Button.svelte';
 
   let { node }: { node: TVConfig & { credentials: { digest_user: string; digest_password: string } } } = $props();
 
   const t = useT();
   const jq = (globalThis as any).jQuery;
 
+  let startState = $state<ButtonState>('idle');
+  let completeState = $state<ButtonState>('idle');
   let pairingReady = $state(false);
-  let pairingDone = $state(false);
   let pin = $state('');
   let invalidPin = $state(false);
 
@@ -41,20 +43,22 @@
     }
   });
 
-  function notifyError(message: string) {
-    (globalThis as any).RED.notify(`Error : ${message}`, { type: 'error', timeout: 10_000 });
-  }
-
   function startPairing() {
     pairingReady = false;
+    completeState = 'idle';
+    startState = 'loading';
     jq.ajax({
       url: 'js-philips-tv-control/pairing',
       type: 'POST',
       data: { action: 'start', ip: node.ip },
       success: () => {
         pairingReady = true;
+        startState = 'success';
       },
-      error: (err: any) => notifyError(err.responseJSON?.message ?? err.statusText),
+      error: (err: any) => {
+        startState = 'error';
+        notifyError(err.responseJSON?.message ?? err.statusText);
+      },
     });
   }
 
@@ -63,16 +67,20 @@
     if (invalidPin) {
       return;
     }
+    completeState = 'loading';
     jq.ajax({
       url: 'js-philips-tv-control/pairing',
       type: 'POST',
       data: { action: 'complete', pin },
       success: (response: { user: string; password: string }) => {
-        pairingDone = true;
+        completeState = 'success';
         node.credentials.digest_user = response.user;
         node.credentials.digest_password = response.password;
       },
-      error: (err: any) => notifyError(err.responseJSON?.message ?? err.statusText),
+      error: (err: any) => {
+        completeState = 'error';
+        notifyError(err.responseJSON?.message ?? err.statusText);
+      },
     });
   }
 </script>
@@ -100,22 +108,22 @@
 </Row>
 
 {#if canPair}
-  <div class="form-row text-center">
-    <button type="button" class="red-ui-button" onclick={startPairing}>Start Pairing</button>
+  <div class="form-row" style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 20px">
+    <Button icon="link" state={startState} onclick={startPairing}>Start Pairing</Button>
     {#if pairingReady}
-      <div class="alert alert-success mb-2 mt-2">
+      <div class="alert alert-success text-center" style="margin: 0; width: 100%">
         <p>Your TV is ready to pair. 🎉</p>
         <p>Please enter the pin code displayed on your TV.</p>
       </div>
-      <div>
-        <input type="text" class="text-center mb-3" style="width: 30%" placeholder="Enter code" bind:value={pin} />
-      </div>
+      <input type="text" class="text-center" style="width: 140px; margin: 0" placeholder="Enter code" bind:value={pin} />
       {#if invalidPin}
-        <div class="text-red-800 my-1">Pin must be 4 digits.</div>
+        <div class="text-red-800">Pin must be 4 digits.</div>
       {/if}
-      <button type="button" class="red-ui-button" onclick={completePairing}>Complete Pairing</button>
-      {#if pairingDone}
-        <div class="alert alert-success mt-2">Your TV is successfully paired. 🎉</div>
+      <Button icon="key" state={completeState} onclick={completePairing}>Complete Pairing</Button>
+      {#if completeState === 'success'}
+        <div class="alert alert-success text-center" style="margin: 0; width: 100%">
+          Your TV is successfully paired. 🎉
+        </div>
       {/if}
     {/if}
   </div>
